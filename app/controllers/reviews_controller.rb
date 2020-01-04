@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     if @review.update(review_params)
       redirect_to @review.book, notice: "レビューを更新しました。"
@@ -39,13 +39,17 @@ class ReviewsController < ApplicationController
   end
 
   private
+
   def review_params
     params.require(:review).permit(:title, :body, :evaluation)
   end
+
   def set_book
     @book = Book.find(params[:book_id])
   end
+
   def set_review
     @review = Review.find(params[:id])
   end
+  
 end
